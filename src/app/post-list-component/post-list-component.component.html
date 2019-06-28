@@ -1,15 +1,8 @@
-<li [ngClass]="{'list-group-item' : true,
-                'list-group-item-success':postLoveIts > 0,
-                'list-group-item-danger':postLoveIts<0}">
-  <div class="header">
-    <strong> {{postTitle}} </strong>
-    <small class="pull-right text-muted">
-      {{postCreatedAt | date: 'dd/MM/y, hh:mm a' |uppercase}}
-    </small>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Posts</h2>
+    <ul>
+      <app-post-list-item-component *ngFor="let post of posts; let i = index" [postIndex]="i" [postTitle]="post.title"  [postContent]="post.content" [postLoveIts]="post.loveIts" [postCreatedAt]="post.createdAt"></app-post-list-item-component>
+    </ul>
   </div>
-  <p>{{postContent}}</p>
-  <div class="form-group">
-    <button class="btn btn-success" (click)="onLoveIt()" >love it</button>&nbsp;
-    <button class="btn btn-danger" (click)="onDontLoveIt()">don't love it</button>
-  </div>
-</li>
+</div>
